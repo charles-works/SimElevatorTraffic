@@ -1,0 +1,63 @@
+# Gradle
+.gradle/
+build/
+
+# IDE
+.idea/
+*.iws
+*.iml
+*.ipr
+.vscode/
+.netbeans/
+
+# Editor
+*~
+.#*
+*#
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Maven (in case of hybrid usage)
+target/
+pom.xml.tag
+pom.xml.next
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.bak
+
+# Logs
+*.log
+
+# Temp files
+*.tmp
+*.temp
+
+# JAR files (except those in libs that might be needed)
+*.jar
+!libs/
+
+# Class files
+*.class
+
+# Package files
+*.war
+*.ear
+
+# Native libraries
+*.dll
+*.so
+*.dylib
+
+# Configuration files (local settings)
+*.local
+config/*.local
+!config/*.local.sample
+
+# Environment variables
+.env
+.env.*
+
+# IDE-specific files
+.recommenders/

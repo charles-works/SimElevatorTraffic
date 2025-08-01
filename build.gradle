@@ -1,0 +1,65 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group = 'com.github.charles-works'
+version = '1.0-SNAPSHOT'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // JSON处理
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.15.2'
+    
+    // PDF报告生成
+    implementation 'com.itextpdf:kernel:7.2.5'
+    implementation 'com.itextpdf:io:7.2.5'
+    implementation 'com.itextpdf:layout:7.2.5'
+    
+    // 约束规划求解器
+    implementation 'org.choco-solver:choco-solver:4.10.11'
+    
+    // 数学计算库
+    implementation 'org.apache.commons:commons-math3:3.6.1'
+    
+    // 数据库连接
+    implementation 'org.postgresql:postgresql:42.6.0'
+    
+    // 连接池
+    implementation 'com.zaxxer:HikariCP:5.0.1'
+    
+    // 日志
+    implementation 'org.slf4j:slf4j-api:2.0.7'
+    implementation 'ch.qos.logback:logback-classic:1.4.8'
+    
+    // 测试框架
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.9.3'
+    testImplementation 'org.mockito:mockito-core:5.4.0'
+    
+    // REST框架
+    implementation 'io.javalin:javalin:5.6.1'
+    
+    // 命令行解析
+    implementation 'info.picocli:picocli:4.7.4'
+}
+
+application {
+    mainClass = 'com.github.charles.works.simelevatortraffic.Main'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+// 配置编译选项
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
