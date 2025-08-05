@@ -42,7 +42,7 @@ SimElevatorTraffic/
 │               ├── config/                   # Configuration management
 │               ├── domain/                   # Domain model
 │               ├── service/                  # Business logic layer
-│               ├── simulation/               # Simulation engine
+│               └── simulation/               # Simulation engine
 ├── build.gradle                              # Gradle build configuration
 ├── settings.gradle                           # Gradle settings
 ├── gradlew                                   # Gradle Wrapper script
@@ -90,6 +90,22 @@ curl -X POST http://localhost:7000/api/v1/simulate \
         "elevators": [
           {
             "capacity": 16,
+            "ratedSpeed": 3.0,
+            "acceleration": 1.0,
+            "deceleration": 1.0,
+            "doorWidth": 1.0,
+            "standbyFloor": 1
+          },
+          {
+            "capacity": 13,
+            "ratedSpeed": 3.0,
+            "acceleration": 1.0,
+            "deceleration": 1.0,
+            "doorWidth": 1.0,
+            "standbyFloor": 1
+          },
+          {
+            "capacity": 13,
             "ratedSpeed": 3.0,
             "acceleration": 1.0,
             "deceleration": 1.0,
