@@ -52,7 +52,7 @@ dependencies {
 }
 
 application {
-    mainClass = 'com.github.charles.works.simelevatortraffic.Main'
+    mainClass = 'com.github.charles.works.simelevatortriffic.Main'
 }
 
 test {

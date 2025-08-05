@@ -5,6 +5,7 @@ package com.github.charles.works.simelevatortriffic.domain;
  */
 public enum PassengerType {
     NORMAL,
+    INDIVIDUAL,
     ELDERLY,
     DISABLED,
     CARGO

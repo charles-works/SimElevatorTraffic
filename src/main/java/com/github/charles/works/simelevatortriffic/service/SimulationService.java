@@ -26,7 +26,14 @@ public class SimulationService {
         // 5. 保存结果到数据库
         // 6. 返回结果
         
-        return new com.github.charles.works.simelevatortriffic.api.SimulationResult(); // 占位符
+        return new com.github.charles.works.simelevatortriffic.api.SimulationResult(
+            java.util.UUID.randomUUID().toString(), 
+            System.currentTimeMillis(), 
+            System.currentTimeMillis(), 
+            0L, 
+            new java.util.ArrayList<>(), 
+            new com.github.charles.works.simelevatortriffic.domain.PassengerStatistics(0, 0.0, 0.0, 0)
+        ); // 占位符
     }
     
     /**

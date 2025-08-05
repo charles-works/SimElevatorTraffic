@@ -58,6 +58,7 @@ config/*.local
 # Environment variables
 .env
 .env.*
+.qwen
 
 # IDE-specific files
 .recommenders/
