@@ -41,7 +41,19 @@ public class ServiceHelpers {
         int floor,
         ElevatorDirection direction,
         String passengerId
-    ) {}
+    ) {
+        public int getFloor() {
+            return floor;
+        }
+        
+        public ElevatorDirection getDirection() {
+            return direction;
+        }
+        
+        public String getPassengerId() {
+            return passengerId;
+        }
+    }
     
     /**
      * 目的地请求记录

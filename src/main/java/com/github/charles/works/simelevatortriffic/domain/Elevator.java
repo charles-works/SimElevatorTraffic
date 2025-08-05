@@ -42,6 +42,46 @@ public class Elevator {
     public Set<Integer> getServiceFloors() { return new HashSet<>(serviceFloors); }
     public ElevatorStatus getStatus() { return status; }
     
+    // 添加缺失的方法
+    public int getCurrentFloor() {
+        // 简化实现，实际应根据位置计算当前楼层
+        return (int) Math.round(status.getPosition() / 3.0) + 1; // 假设每层3米
+    }
+    
+    public ElevatorDirection getDirection() {
+        return status.getDirection();
+    }
+    
+    public Building getBuilding() {
+        // 这个方法在当前设计中可能不适用，因为我们没有在Elevator中存储对Building的引用
+        // 在实际实现中，可能需要重新设计类结构
+        return null;
+    }
+    
+    public long getFloorTravelTime() {
+        // 简化实现，实际应基于电梯速度和楼层高度计算
+        return 2000; // 2秒每层
+    }
+    
+    public void addCallRequest(int floor, ElevatorDirection direction) {
+        // 添加召唤请求到电梯状态中
+        Set<Integer> newStops = new HashSet<>(status.getRegisteredStops());
+        newStops.add(floor);
+        ElevatorStatus newStatus = new ElevatorStatus(
+            status.getPosition(),
+            status.getDirection(),
+            status.getSpeed(),
+            status.isDoorOpen(),
+            status.getDoorOpenTime(),
+            newStops,
+            status.getPassengers(),
+            status.getLastStopTime(),
+            status.getBoardingPassengers(),
+            status.getAlightingPassengers()
+        );
+        setStatus(newStatus);
+    }
+    
     // Setter方法
     public void setStatus(ElevatorStatus status) {
         this.status = status;
