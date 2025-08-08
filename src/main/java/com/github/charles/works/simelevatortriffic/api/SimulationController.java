@@ -21,12 +21,18 @@ public class SimulationController {
      */
     public void simulate(Context ctx) {
         try {
+            System.out.println("Received simulation request: " + ctx.body());
+            
             // 解析请求体
             SimulationRequest request = ctx.bodyValidator(SimulationRequest.class)
                 .get();
             
+            System.out.println("Parsed request: " + request);
+            
             // 执行仿真
             SimulationResult result = simulationService.runSimulation(request);
+            
+            System.out.println("Simulation completed successfully");
             
             // 返回结果
             ctx.json(new ApiResponse<SimulationResult>(
@@ -37,11 +43,14 @@ public class SimulationController {
                 System.currentTimeMillis()
             ));
         } catch (Exception e) {
+            System.err.println("Error processing simulation request: " + e.getMessage());
+            e.printStackTrace();
+            
             ctx.status(500);
             ctx.json(new ApiResponse<Void>(
                 "ERROR",
                 500,
-                "Internal server error",
+                "Internal server error: " + e.getMessage(),
                 null,
                 System.currentTimeMillis()
             ));

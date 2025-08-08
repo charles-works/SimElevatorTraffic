@@ -8,7 +8,7 @@ import com.github.charles.works.simelevatortriffic.domain.BuildingType;
 public class BuildingConfig {
     private String id;
     private String name;
-    private int totalFloors;
+    private int floors;
     private double floorHeight;
     private BuildingType type;
     
@@ -22,8 +22,8 @@ public class BuildingConfig {
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }
     
-    public int getFloors() { return totalFloors; }
-    public void setFloors(int totalFloors) { this.totalFloors = totalFloors; }
+    public int getFloors() { return floors; }
+    public void setFloors(int floors) { this.floors = floors; }
     
     public double getFloorHeight() { return floorHeight; }
     public void setFloorHeight(double floorHeight) { this.floorHeight = floorHeight; }
