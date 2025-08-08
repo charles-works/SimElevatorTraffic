@@ -1,6 +1,7 @@
 package com.github.charles.works.simelevatortriffic.config;
 
 import com.github.charles.works.simelevatortriffic.domain.BuildingType;
+import java.util.List;
 
 /**
  * 建筑配置类
@@ -9,8 +10,9 @@ public class BuildingConfig {
     private String id;
     private String name;
     private int floors;
-    private double floorHeight;
+    private double floorHeight; // 默认层高
     private BuildingType type;
+    private List<FloorConfig> floorConfigs; // 各层详细配置
     
     // 构造函数
     public BuildingConfig() {}
@@ -30,4 +32,7 @@ public class BuildingConfig {
     
     public BuildingType getType() { return type; }
     public void setType(BuildingType type) { this.type = type; }
+    
+    public List<FloorConfig> getFloorConfigs() { return floorConfigs; }
+    public void setFloorConfigs(List<FloorConfig> floorConfigs) { this.floorConfigs = floorConfigs; }
 }

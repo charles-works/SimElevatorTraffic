@@ -65,15 +65,31 @@ public class SimulationService {
             java.util.List<com.github.charles.works.simelevatortriffic.config.ElevatorGroupConfig> elevatorGroupConfigs) {
         // 创建楼层
         java.util.List<com.github.charles.works.simelevatortriffic.domain.Floor> floors = new java.util.ArrayList<>();
-        for (int i = 1; i <= buildingConfig.getFloors(); i++) {
-            // 使用正确的构造函数
-            floors.add(new com.github.charles.works.simelevatortriffic.domain.Floor(
-                i, 
-                com.github.charles.works.simelevatortriffic.domain.FloorUsage.OFFICE, // 默认用途
-                0, // 默认人数
-                0.0, // 默认到达率
-                new java.util.HashMap<>() // 空的时间分布映射
-            ));
+        
+        // 如果提供了每层详细配置，则使用详细配置
+        if (buildingConfig.getFloorConfigs() != null && !buildingConfig.getFloorConfigs().isEmpty()) {
+            for (com.github.charles.works.simelevatortriffic.config.FloorConfig floorConfig : buildingConfig.getFloorConfigs()) {
+                // 使用楼层详细配置创建楼层对象
+                floors.add(new com.github.charles.works.simelevatortriffic.domain.Floor(
+                    floorConfig.getFloorNumber(),
+                    floorConfig.getUsage() != null ? floorConfig.getUsage() : com.github.charles.works.simelevatortriffic.domain.FloorUsage.OFFICE, // 默认用途
+                    floorConfig.getPopulation(), // 人数
+                    floorConfig.getArrivalRate(), // 到达率
+                    new java.util.HashMap<>() // 空的时间分布映射
+                ));
+            }
+        } else {
+            // 如果没有提供详细配置，则使用默认配置创建所有楼层
+            for (int i = 1; i <= buildingConfig.getFloors(); i++) {
+                // 使用正确的构造函数
+                floors.add(new com.github.charles.works.simelevatortriffic.domain.Floor(
+                    i, 
+                    com.github.charles.works.simelevatortriffic.domain.FloorUsage.OFFICE, // 默认用途
+                    0, // 默认人数
+                    0.0, // 默认到达率
+                    new java.util.HashMap<>() // 空的时间分布映射
+                ));
+            }
         }
         
         // 创建电梯组

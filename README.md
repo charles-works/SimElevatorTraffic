@@ -74,7 +74,7 @@ cd SimElevatorTraffic
 ### API Usage Example
 
 ```bash
-# Execute simulation
+# Execute simulation with uniform floor configuration
 curl -X POST http://localhost:7000/api/v1/simulate \
   -H "Content-Type: application/json" \
   -d '{
@@ -120,6 +120,81 @@ curl -X POST http://localhost:7000/api/v1/simulate \
             "doorWidth": 1.0,
             "standbyFloor": 1,
             "serviceFloors": [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30]
+          }
+        ]
+      }
+    ],
+    "simulationConfig": {
+      "duration": 3600
+    }
+  }'
+
+# Execute simulation with different configuration for each floor
+curl -X POST http://localhost:7000/api/v1/simulate \
+  -H "Content-Type: application/json" \
+  -d '{
+    "buildingConfig": {
+      "id": "2",
+      "name": "Mixed-use Building",
+      "floors": 20,
+      "floorHeight": 4.0,
+      "type": "MIXED",
+      "floorConfigs": [
+        {
+          "floorNumber": 1,
+          "usage": "LOBBY",
+          "population": 50,
+          "arrivalRate": 2.0,
+          "floorHeight": 5.0
+        },
+        {
+          "floorNumber": 2,
+          "usage": "RETAIL",
+          "population": 100,
+          "arrivalRate": 3.0,
+          "floorHeight": 4.5
+        },
+        {
+          "floorNumber": 3,
+          "usage": "OFFICE",
+          "population": 200,
+          "arrivalRate": 5.0,
+          "floorHeight": 4.0
+        },
+        {
+          "floorNumber": 4,
+          "usage": "OFFICE",
+          "population": 180,
+          "arrivalRate": 4.5,
+          "floorHeight": 4.0
+        }
+      ]
+    },
+    "elevatorGroups": [
+      {
+        "id": "1",
+        "controlType": "GROUP_CONTROL",
+        "servedFloors": [1,2,3,4],
+        "elevators": [
+          {
+            "id": "1",
+            "capacity": 16,
+            "ratedSpeed": 3.0,
+            "acceleration": 1.0,
+            "deceleration": 1.0,
+            "doorWidth": 1.0,
+            "standbyFloor": 1,
+            "serviceFloors": [1,2,3,4]
+          },
+          {
+            "id": "2",
+            "capacity": 13,
+            "ratedSpeed": 3.0,
+            "acceleration": 1.0,
+            "deceleration": 1.0,
+            "doorWidth": 1.0,
+            "standbyFloor": 1,
+            "serviceFloors": [1,2,3,4]
           }
         ]
       }
