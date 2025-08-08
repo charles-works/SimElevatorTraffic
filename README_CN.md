@@ -79,46 +79,53 @@ curl -X POST http://localhost:7000/api/v1/simulate \
   -H "Content-Type: application/json" \
   -d '{
     "buildingConfig": {
+      "id": "1",
       "name": "办公大楼",
-      "totalFloors": 30,
+      "floors": 30,
       "floorHeight": 4.0,
-      "buildingType": "OFFICE"
+      "type": "OFFICE"
     },
     "elevatorGroups": [
       {
+        "id": "1",
         "controlType": "GROUP_CONTROL",
+        "servedFloors": [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30],
         "elevators": [
           {
+            "id": "1",
             "capacity": 16,
             "ratedSpeed": 3.0,
             "acceleration": 1.0,
             "deceleration": 1.0,
             "doorWidth": 1.0,
-            "standbyFloor": 1
+            "standbyFloor": 1,
+            "serviceFloors": [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30]
           },
           {
+            "id": "2",
             "capacity": 13,
             "ratedSpeed": 3.0,
             "acceleration": 1.0,
             "deceleration": 1.0,
             "doorWidth": 1.0,
-            "standbyFloor": 1
+            "standbyFloor": 1,
+            "serviceFloors": [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30]
           },
           {
+            "id": "3",
             "capacity": 13,
             "ratedSpeed": 3.0,
             "acceleration": 1.0,
             "deceleration": 1.0,
             "doorWidth": 1.0,
-            "standbyFloor": 1
+            "standbyFloor": 1,
+            "serviceFloors": [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30]
           }
         ]
       }
     ],
     "simulationConfig": {
-      "duration": 3600,
-      "startTime": "08:00",
-      "endTime": "09:00"
+      "duration": 3600
     }
   }'
 ```
